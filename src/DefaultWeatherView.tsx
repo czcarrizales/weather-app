@@ -5,18 +5,19 @@ interface DefaultWeatherViewProps {
     weatherData: any;
     convertToFahrenheit: (number: number) => string;
     dailyWeatherData: any;
+    loadingWeatherData: boolean;
   }
 
-const DefaultWeatherView: React.FC<DefaultWeatherViewProps> = ({ weatherData, convertToFahrenheit, dailyWeatherData }) => {
+const DefaultWeatherView: React.FC<DefaultWeatherViewProps> = ({ weatherData, convertToFahrenheit, dailyWeatherData, loadingWeatherData }) => {
     
     return (
         <>
             <div className='main-temperature'>
-                <h1>{convertToFahrenheit(weatherData?.main.temp)}°</h1>
-                <h2>{weatherData?.name !== '' ? weatherData?.name : 'Remote Area'}</h2>
+                <h1>{loadingWeatherData ? 'Loading...' : convertToFahrenheit(weatherData?.main.temp) + '°'}</h1>
+                <h2>{loadingWeatherData ? 'Loading...' : weatherData?.name !== '' ? weatherData?.name : 'Remote Area'}</h2>
                 <div className='main-min-max-container'>
-                    <p className='min-temperature'>Min: {convertToFahrenheit(weatherData?.main.temp_min)}°</p>
-                    <p className='max-temperature'>Max: {convertToFahrenheit(weatherData?.main.temp_max)}°</p>
+                    <p className='min-temperature'>Min: {loadingWeatherData ? 'Loading...' : convertToFahrenheit(weatherData?.main.temp_min) + '°'}</p>
+                    <p className='max-temperature'>Max: {loadingWeatherData ? 'Loading...' : convertToFahrenheit(weatherData?.main.temp_max) + '°'}</p>
                 </div>
             </div>
             <div className='forecast-container'>

@@ -11,6 +11,7 @@ import NavigationBar from './NavigationBar';
 
 function App() {
 
+  const [loadingWeatherData, setLoadingWeatherData] = useState<boolean>(true)
   const [weatherData, setWeatherData] = useState<any>(null)
   const [dailyWeatherData, setDailyWeatherData] = useState(null)
 
@@ -26,6 +27,7 @@ function App() {
             const dailyResponse = await axios.get(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&daily=temperature_2m_max,temperature_2m_min&temperature_unit=fahrenheit&timeformat=unixtime&timezone=auto`)
       const dailyWeatherDataArray = dailyResponse.data.daily
       setDailyWeatherData(dailyWeatherDataArray)
+            setLoadingWeatherData(false)
           } catch (error) {
             console.error('Error getting current weather data:', error)
           }
@@ -53,6 +55,7 @@ function App() {
       const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=e17d9f28655ac27f972639f336659737`)
       getDailyWeatherData(lat, lon)
       setWeatherData(response.data)
+      setLoadingWeatherData(false)
     } catch (error) {
       console.error('Error searching and getting current weather data:', error)
     }
@@ -70,6 +73,7 @@ function App() {
 
   const handleSelect = async (selectedAddress: string) => {
     try {
+      setLoadingWeatherData(true)
       const results = await geocodeByAddress(selectedAddress);
       const latLng = await getLatLng(results[0]);
       const { lat, lng } = latLng;
@@ -90,7 +94,7 @@ function App() {
       <BrowserRouter>
         <NavigationBar address={address} handleChange={handleChange} handleSelect={handleSelect} />
         <Routes>
-          <Route path='/' element={<DefaultWeatherView weatherData={weatherData} convertToFahrenheit={convertToFahrenheit} dailyWeatherData={dailyWeatherData} />} />
+          <Route path='/' element={<DefaultWeatherView weatherData={weatherData} convertToFahrenheit={convertToFahrenheit} dailyWeatherData={dailyWeatherData} loadingWeatherData={loadingWeatherData} />} />
           <Route path='compareweather' element={<CompareWeather  convertToFahrenheit={convertToFahrenheit} />} />
           <Route path='/temperaturetrends' element={<TemperatureTrends weatherData={weatherData} convertToFahrenheit={convertToFahrenheit} />} />
           <Route path='windspeedtrends' element={<WindSpeedTrends weatherData={weatherData} />} />
