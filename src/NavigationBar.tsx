@@ -28,7 +28,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ address, handleChange, ha
                   backgroundColor: suggestion.active ? 'white' : 'transparent',
                 };
                 return (
-                  <div {...getSuggestionItemProps(suggestion, { style })}>
+                  <div className='navbar-search-suggestion' {...getSuggestionItemProps(suggestion, { style })}>
                     {suggestion.description}
                   </div>
                 );

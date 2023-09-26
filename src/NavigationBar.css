@@ -7,3 +7,13 @@
 .navbar-toggle {
     background-color: white;
 }
+
+.navbar-search-suggestion {
+    background-color: blue;
+    border: 1px solid red;
+}
+
+.navbar-search-suggestion:hover {
+    color: black;
+    cursor: pointer;
+}
