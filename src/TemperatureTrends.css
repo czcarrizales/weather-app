@@ -1,0 +1,9 @@
+.temperature-trends-container {
+    text-align: center;
+}
+
+.temperature-chart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
