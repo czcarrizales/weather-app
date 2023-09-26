@@ -9,8 +9,7 @@
 }
 
 .navbar-search-suggestion {
-    background-color: blue;
-    border: 1px solid red;
+    padding: .5rem;
 }
 
 .navbar-search-suggestion:hover {
