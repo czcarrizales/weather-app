@@ -33,6 +33,7 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    text-align: center;
     padding: 3rem 0;
     background-color: rgb(0, 0, 0, 0.25);
     border-radius: 15px;
@@ -45,6 +46,10 @@ h1 {
 .forecast-box {
     margin: 0;
     text-align: center;
+}
+
+.inner-forecast-loading {
+    width: 100%;
 }
 
 .forecast-box p {

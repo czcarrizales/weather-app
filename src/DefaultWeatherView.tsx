@@ -24,11 +24,15 @@ const DefaultWeatherView: React.FC<DefaultWeatherViewProps> = ({ weatherData, co
                 <h3>7 Day Forecast</h3>
                 <div className="inner-forecast-container">
                 {
+                    loadingWeatherData
+                    ?
+                    <p className='inner-forecast-loading'>Loading...</p>
+                    :
                     dailyWeatherData?.time.map((date: any, index: any) => {
                         const maxTemp = dailyWeatherData?.temperature_2m_max[index]
                         return (
                             <div className='forecast-box'>
-                                <p>{maxTemp}°</p>
+                                <p>{maxTemp + '°'}</p>
                                 <p>{format(new Date(date * 1000), 'MM/dd')}</p>
                             </div>
                         )
@@ -40,19 +44,19 @@ const DefaultWeatherView: React.FC<DefaultWeatherViewProps> = ({ weatherData, co
             <div className="other-boxes">
                 <div className='box'>
                     <p>Wind Speed</p>
-                    <p>{weatherData?.wind.speed} mph</p>
+                    <p>{loadingWeatherData ? 'Loading...' : weatherData?.wind.speed + 'mph'}</p>
                 </div>
                 <div className='box'>
                     <p>Humidity</p>
-                    <p>{weatherData?.main.humidity}%</p>
+                    <p>{loadingWeatherData ? 'Loading...' : weatherData?.main.humidity + '%'}</p>
                 </div>
                 <div className='box'>
                     <p>Coordinates</p>
-                    <p>{weatherData?.coord.lat.toFixed(2) + ', ' + weatherData?.coord.lon.toFixed(2)}</p>
+                    <p>{loadingWeatherData ? 'Loading...' : weatherData?.coord.lat.toFixed(2) + ', ' + weatherData?.coord.lon.toFixed(2)}</p>
                 </div>
                 <div className='box'>
                     <p>Pressure</p>
-                    <p>{weatherData?.main.pressure} hPa</p>
+                    <p>{loadingWeatherData ? 'Loading...' : weatherData?.main.pressure + 'hPa'}</p>
                 </div>
             </div>
 
