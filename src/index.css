@@ -6,10 +6,10 @@
   font-family: Inter;
 }
 
-body {
-  height: 100svh;
+body, html {
+  min-height: 100svh;
   margin-right: 16px;
   margin-left: 16px;
-  background-color: rgb(25, 105, 151);
+background: linear-gradient(180deg, rgba(9,145,244,1) 0%, rgba(14,191,238,1) 100%);
   color: white;
 }
