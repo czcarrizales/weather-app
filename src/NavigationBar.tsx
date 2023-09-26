@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Nav, Navbar} from 'react-bootstrap'
+import { Nav, Navbar } from 'react-bootstrap'
 import PlacesAutocomplete from 'react-places-autocomplete'
 import './NavigationBar.css'
 
@@ -9,36 +9,36 @@ interface NavigationBarProps {
   handleSelect: any;
 }
 
-const NavigationBar: React.FC<NavigationBarProps> = ({address, handleChange, handleSelect}) => {
+const NavigationBar: React.FC<NavigationBarProps> = ({ address, handleChange, handleSelect }) => {
   return (
-        <Navbar expand="lg">
-          
+    <Navbar expand="lg">
+
       <PlacesAutocomplete
-      value={address}
-      onChange={handleChange}
-      onSelect={handleSelect}
-    >
-      {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-        <div>
-          <input {...getInputProps({ placeholder: 'Search for a location' })} className='searchbar' />
+        value={address}
+        onChange={handleChange}
+        onSelect={handleSelect}
+      >
+        {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <div>
-            {loading ? <div>Loading...</div> : null}
-            {suggestions.map((suggestion) => {
-              const style = {
-                backgroundColor: suggestion.active ? 'white' : 'transparent',
-              };
-              return (
-                <div {...getSuggestionItemProps(suggestion, { style })}>
-                  {suggestion.description}
-                </div>
-              );
-            })}
+            <input {...getInputProps({ placeholder: 'Search for a location' })} className='searchbar' />
+            <div>
+              {loading ? <div>Loading...</div> : null}
+              {suggestions.map((suggestion) => {
+                const style = {
+                  backgroundColor: suggestion.active ? 'white' : 'transparent',
+                };
+                return (
+                  <div {...getSuggestionItemProps(suggestion, { style })}>
+                    {suggestion.description}
+                  </div>
+                );
+              })}
+            </div>
           </div>
-        </div>
-      )}
-    </PlacesAutocomplete>
-    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
+        )}
+      </PlacesAutocomplete>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" className='navbar-toggle' />
+      <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
           <Nav><Link to={'/'}>Home</Link></Nav>
           <Nav><Link to={'/compareweather'}>Compare</Link></Nav>
@@ -47,7 +47,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({address, handleChange, han
         </Nav>
       </Navbar.Collapse>
     </Navbar>
-    
+
   )
 }
 
