@@ -23,7 +23,9 @@ function App() {
           try {
             const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=e17d9f28655ac27f972639f336659737`)
             setWeatherData(response.data)
-            console.log(response.data)
+            const dailyResponse = await axios.get(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&daily=temperature_2m_max,temperature_2m_min&temperature_unit=fahrenheit&timeformat=unixtime&timezone=auto`)
+      const dailyWeatherDataArray = dailyResponse.data.daily
+      setDailyWeatherData(dailyWeatherDataArray)
           } catch (error) {
             console.error('Error getting current weather data:', error)
           }
