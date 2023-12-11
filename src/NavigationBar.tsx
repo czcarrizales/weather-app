@@ -16,10 +16,10 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ address, handleChange, ha
       <Navbar.Toggle aria-controls="basic-navbar-nav" className='navbar-toggle' />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto nav-in-collapse">
-          <Nav.Item><Nav.Link to={'/'}>Home</Nav.Link></Nav.Item>
-          <Nav><Nav.Link to={'/compareweather'}>Compare</Nav.Link></Nav>
-          <Nav><Nav.Link to={'/temperaturetrends'}>Temp Trends</Nav.Link></Nav>
-          <Nav><Nav.Link to={'/windspeedtrends'}>Wind Trends</Nav.Link></Nav>
+          <Nav.Item><Nav.Link><Link to={'/'}>Home</Link>Home</Nav.Link></Nav.Item>
+          <Nav><Nav.Link><Link to={'/compareweather'}>Compare</Link></Nav.Link></Nav>
+          <Nav><Nav.Link><Link to={'/temperaturetrends'}>Temp Trends</Link></Nav.Link></Nav>
+          <Nav><Nav.Link><Link to={'/windspeedtrends'}>Wind Speed Trends</Link></Nav.Link></Nav>
           <PlacesAutocomplete
             value={address}
             onChange={handleChange}
