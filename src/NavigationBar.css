@@ -1,18 +1,8 @@
-.ml-auto a {
-    color: white;
-    margin-top: 8px;
-    margin-right: 16px;
+#places-search {
+    z-index: 999;
+    border: 5px solid red;
 }
 
-.navbar-toggle {
-    background-color: white;
-}
-
-.navbar-search-suggestion {
-    padding: .5rem;
-}
-
-.navbar-search-suggestion:hover {
-    color: black;
-    cursor: pointer;
+.nav-in-collapse {
+    border: 1px solid purple;
 }
