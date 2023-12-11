@@ -16,7 +16,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ address, handleChange, ha
       <Navbar.Toggle aria-controls="basic-navbar-nav" className='navbar-toggle' />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto nav-in-collapse">
-          <Nav.Item><Nav.Link><Link to={'/'}></Link>Home</Nav.Link></Nav.Item>
+          <Nav.Item><Nav.Link><Link to={'/'}>Home</Link></Nav.Link></Nav.Item>
           <Nav><Nav.Link><Link to={'/compareweather'}>Compare</Link></Nav.Link></Nav>
           <Nav><Nav.Link><Link to={'/temperaturetrends'}>Temp Trends</Link></Nav.Link></Nav>
           <Nav><Nav.Link><Link to={'/windspeedtrends'}>Wind Speed Trends</Link></Nav.Link></Nav>
