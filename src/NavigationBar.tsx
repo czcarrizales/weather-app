@@ -11,41 +11,42 @@ interface NavigationBarProps {
 
 const NavigationBar: React.FC<NavigationBarProps> = ({ address, handleChange, handleSelect }) => {
   return (
-    <Navbar expand="lg">
-
-      <PlacesAutocomplete
-        value={address}
-        onChange={handleChange}
-        onSelect={handleSelect}
-      >
-        {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-          <div>
-            <input {...getInputProps({ placeholder: 'Search for a location' })} className='searchbar' />
-            <div>
-              {loading ? <div>Loading...</div> : null}
-              {suggestions.map((suggestion) => {
-                const style = {
-                  backgroundColor: suggestion.active ? 'white' : 'transparent',
-                };
-                return (
-                  <div className='navbar-search-suggestion' {...getSuggestionItemProps(suggestion, { style })}>
-                    {suggestion.description}
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        )}
-      </PlacesAutocomplete>
+    <Navbar expand="lg" id='navbar'>
+      <Navbar.Brand>Weather App</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" className='navbar-toggle' />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="ml-auto">
-          <Nav><Link to={'/'}>Home</Link></Nav>
-          <Nav><Link to={'/compareweather'}>Compare</Link></Nav>
-          <Nav><Link to={'/temperaturetrends'}>Temp Trends</Link></Nav>
-          <Nav><Link to={'/windspeedtrends'}>Wind Trends</Link></Nav>
+        <Nav className="ml-auto nav-in-collapse">
+          <Nav.Item><Nav.Link to={'/'}>Home</Nav.Link></Nav.Item>
+          <Nav><Nav.Link to={'/compareweather'}>Compare</Nav.Link></Nav>
+          <Nav><Nav.Link to={'/temperaturetrends'}>Temp Trends</Nav.Link></Nav>
+          <Nav><Nav.Link to={'/windspeedtrends'}>Wind Trends</Nav.Link></Nav>
+          <PlacesAutocomplete
+            value={address}
+            onChange={handleChange}
+            onSelect={handleSelect}
+          >
+            {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+              <div id='places-search'>
+                <input {...getInputProps({ placeholder: 'Search for a location' })} className='searchbar' />
+                <div>
+                  {loading ? <div>Loading...</div> : null}
+                  {suggestions.map((suggestion) => {
+                    const style = {
+                      backgroundColor: suggestion.active ? 'white' : 'transparent',
+                    };
+                    return (
+                      <div className='navbar-search-suggestion' {...getSuggestionItemProps(suggestion, { style })}>
+                        {suggestion.description}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+          </PlacesAutocomplete>
         </Nav>
       </Navbar.Collapse>
+
     </Navbar>
 
   )
