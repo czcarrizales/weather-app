@@ -1,5 +1,5 @@
 import './DefaultWeatherView.css'
-import { format, getHours } from 'date-fns'
+import { format} from 'date-fns'
 
 interface DefaultWeatherViewProps {
     weatherData: any;
