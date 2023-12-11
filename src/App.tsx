@@ -54,17 +54,17 @@ function App() {
     }
   }
 
-  const getHourlyWeatherData = async (lat: number, lon: number) => {
-    try {
-      const response = await axios.get(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,weather_code&temperature_unit=fahrenheit&timeformat=unixtime&timezone=auto`)
-      console.log(response, 'hourly weather')
-      const hourlyWeatherDataArray = response.data.hourly
-      console.log(hourlyWeatherDataArray)
-      setHourlyWeatherData(hourlyWeatherDataArray)
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  // const getHourlyWeatherData = async (lat: number, lon: number) => {
+  //   try {
+  //     const response = await axios.get(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,weather_code&temperature_unit=fahrenheit&timeformat=unixtime&timezone=auto`)
+  //     console.log(response, 'hourly weather')
+  //     const hourlyWeatherDataArray = response.data.hourly
+  //     console.log(hourlyWeatherDataArray)
+  //     setHourlyWeatherData(hourlyWeatherDataArray)
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
 
   const searchWeatherData = async (lat: number, lon: number) => {
     try {
